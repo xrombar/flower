@@ -39,7 +39,7 @@ FLOWER_ZERO_PROTECT
 ```
 ### jop
 
-Using jump gadgets is nowadays the preferred way to evade the [PATRIOT]() memory scanner which targets the research of both [@C5pider] and [ilove2pwn_]. In simple terms, PATRIOT will check if the **Rip** field of a CONTEXT struct points to a \*Protect function. Since it doesn't inspect non-volatile registers we can simply store the address of our function in a non-volatile register and point the **Rip** of the CONTEXT to an arbitrary gadget that jumps to said register.
+Using jump gadgets is nowadays the preferred way to evade the [PATRIOT](https://github.com/joe-desimone/patriot) memory scanner which targets the research of both [@C5pider](https://twitter.com/C5pider) and [ilove2pwn_](https://twitter.com/ilove2pwn_). In simple terms, PATRIOT will check if the **Rip** field of a CONTEXT struct points to a \*Protect function. Since it doesn't inspect non-volatile registers we can simply store the address of our function in a non-volatile register and point the **Rip** of the CONTEXT to an arbitrary gadget that jumps to said register.
 
 ```c
 //
