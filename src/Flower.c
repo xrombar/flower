@@ -146,8 +146,9 @@ FUNC NTSTATUS FwFoliageObf(
     // rop
     //
     PCONTEXT Rop[ FLOWER_MAX_LEN ]  = { 0 };
-    CONTEXT RopInit                 = { 0 };
+    CONTEXT  RopInit                = { 0 };
     SHORT    RopCount               = { 0 };
+    
     FLOWER_ROPSTART_PRM StartPrm    = { 0 };
     FLOWER_ROPCHAIN_PRM ChainPrm    = { 0 };
 
@@ -271,7 +272,7 @@ LEAVE:
     //
     // terminate sleep thread
     //
-    if ( Dupe != NULL ) {
+    if ( Dupe ) {
         Ctx->Win32.NtTerminateThread( Dupe, STATUS_SUCCESS );
         Ctx->Win32.NtClose( Dupe );
     }
@@ -936,7 +937,7 @@ FUNC NTSTATUS FwRopChainPrm(
 
     } else if ( Ctx->Config & FLOWER_GADGET_RBX ) {
         //
-        // change pattern so it's now FF 23
+        // change pattern so it's now FF E3
         //
         Pattern[ 1 ] = 0xE3;
         if ( ( Prm->Gadget = FwGetGadget( Pattern, sizeof( Pattern ) ) ) ) {
