@@ -245,7 +245,6 @@ FUNC NTSTATUS FwFoliageObf(
 
             } else {
                 PRINTF( "[FLOWER] [-] NtGetContextThread failed [Status: 0x%lx]\n", Status )
-
             }
 
         }  else {
@@ -275,6 +274,10 @@ LEAVE:
     if ( Dupe != NULL ) {
         Ctx->Win32.NtTerminateThread( Dupe, STATUS_SUCCESS );
         Ctx->Win32.NtClose( Dupe );
+    }
+
+    if ( Ctx->Evnts.Start ) {
+        Ctx->Win32.NtClose( Ctx->Evnts.Start );
     }
 
     //
